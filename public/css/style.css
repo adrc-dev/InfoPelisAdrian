@@ -8,10 +8,18 @@ body {
 header {
     width: 100%;
     background-color: #737373;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header #indexLogo {
     width: 200px;
+}
+
+.header-logos {
+    display: flex;
+    gap: 15px; /* Espaciado entre los logos */
 }
 
 .logo {
