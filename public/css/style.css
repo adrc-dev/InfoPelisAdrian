@@ -19,7 +19,7 @@ header #indexLogo {
 
 .header-logos {
     display: flex;
-    gap: 15px; /* Espaciado entre los logos */
+    gap: 15px;
 }
 
 .logo {

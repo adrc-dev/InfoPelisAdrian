@@ -24,7 +24,7 @@ Route::get('movies/{id}', function ($id) {
 
 
 // informacion de los pesonajes
-Route::get('characters/{id?}', function($id = null) {
+Route::get('characters/{id?}', function ($id = null) {
     // guardamos la ruta del json
     $jsonUrl = asset('UD09.01_Practica_9.2.2.json');
     // decodificamos el json
@@ -35,7 +35,7 @@ Route::get('characters/{id?}', function($id = null) {
 })->name('characters');
 
 // ruta controlador de movies
-Route::resource('movies',MovieController::class)->except(['store', 'update', 'destroy']);
+Route::resource('movies', MovieController::class)->except(['store', 'update', 'destroy']);
 
 // ruta controlador de persons
 Route::resource('persons', PersonController::class)->only(['show']);
@@ -45,4 +45,3 @@ Route::get('actors', [PersonController::class, 'actors'])->name('actors');
 
 // ruta controlador movieDirector
 Route::resource('movieDirectors', MovieDirectorController::class)->only(['index', 'show']);
-

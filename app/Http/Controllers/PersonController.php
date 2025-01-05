@@ -35,7 +35,7 @@ class PersonController extends Controller
      */
     public function show(string $id)
     {
-         return view("persons.show", compact("id"));
+        return view("persons.show", compact("id"));
     }
 
     /**
@@ -62,7 +62,8 @@ class PersonController extends Controller
         //
     }
 
-    public function actors () {
+    public function actors()
+    {
         return view("actors.index");
     }
 }
