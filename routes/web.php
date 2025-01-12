@@ -20,8 +20,6 @@ Route::get('movies', function () {
 Route::get('movies/{id}', function ($id) {
     return view('movies.movie', compact('id'));
 })->whereNumber('id')->name('movie');
-*/
-
 
 // informacion de los pesonajes
 Route::get('characters/{id?}', function ($id = null) {
@@ -33,6 +31,7 @@ Route::get('characters/{id?}', function ($id = null) {
     // pasamos la vista con la variable characters y id
     return view('characters', compact('characters', 'id'));
 })->name('characters');
+*/
 
 // ruta controlador de movies
 Route::resource('movies', MovieController::class)->except(['store', 'update', 'destroy']);

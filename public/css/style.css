@@ -1,6 +1,4 @@
 body {
-    margin: 0;
-    padding: 0;
     background-color: black;
     color: antiquewhite;
 }
@@ -11,6 +9,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
 }
 
 header #indexLogo {
@@ -24,13 +23,6 @@ header #indexLogo {
 
 .logo {
     width: 50px;
-}
-
-footer {
-    background-color: #737373;
-    color: white;
-    text-align: center;
-    padding: 10px;
 }
 
 .container {
@@ -54,4 +46,14 @@ footer {
     margin: 10px;
     padding: 5px;
     background-color: #222;
+}
+
+footer {
+    background-color: #737373;
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    padding: 10px;
 }
