@@ -3,6 +3,7 @@ body {
     color: antiquewhite;
 }
 
+/* headers */
 header {
     width: 100%;
     background-color: #737373;
@@ -21,33 +22,7 @@ header #indexLogo {
     gap: 15px;
 }
 
-.logo {
-    width: 50px;
-}
-
-.container {
-    text-align: center;
-}
-
-.containerFilms {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    justify-content: center;
-    padding: 0 30px 30px 30px;
-}
-
-.filmContainer {
-    border: solid 1px aqua;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px aqua;
-    width: 175px;
-    height: 100px;
-    margin: 10px;
-    padding: 5px;
-    background-color: #222;
-}
-
+/* footer */
 footer {
     background-color: #737373;
     color: white;
@@ -56,4 +31,101 @@ footer {
     position: relative;
     bottom: 0;
     padding: 10px;
+}
+
+.logo {
+    width: 50px;
+}
+
+.container {
+    text-align: center;
+}
+
+/* usado en characters */
+.containerFilms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    justify-content: center;
+    padding: 0 30px 30px 30px;
+}
+
+/* contenedor de peliculas y otros */
+.filmContainer {
+    border: solid 1px aqua;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0.2px white;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 5px;
+    background-color: #222;
+    text-align: left;
+}
+/* usado para subtitles */
+.subtitle {
+    text-align: center;
+    font-size: 25px;
+}
+
+
+/* todos los enlaces */
+a {
+    text-decoration: none;
+    color: goldenrod;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* logo borrar */
+.delete {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+.filmContainer form {
+    text-align: center;
+}
+
+/* paginacion */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.pagination-link {
+    color: #fff;
+    background-color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.pagination-link:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.pagination-link.active {
+    background-color: aqua;
+    color: #333;
+    font-weight: bold;
+}
+
+.pagination-link.disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
 }

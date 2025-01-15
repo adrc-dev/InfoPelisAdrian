@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -11,7 +12,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view("movies.index");
+        $movies = Movie::paginate(5); // limitamos la paginacion a 5
+        // $movies = Movie::orderBy('id', 'DESC')->get(); // caso queramos ordenado por id descendente
+        return view("movies.index", compact('movies'));
     }
 
     /**
@@ -35,7 +38,8 @@ class MovieController extends Controller
      */
     public function show(string $id)
     {
-        return view("movies.show", compact("id"));
+        $movie = Movie::findOrFail($id);
+        return view("movies.show", compact("movie"));
     }
 
     /**
@@ -43,7 +47,8 @@ class MovieController extends Controller
      */
     public function edit(string $id)
     {
-        return view("movies.edit", compact("id"));
+        $movie = Movie::findOrFail($id);
+        return view("movies.edit", compact("movie"));
     }
 
     /**
@@ -59,6 +64,7 @@ class MovieController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Movie::findOrFail($id)->delete();
+        return redirect()->route('movies.index');
     }
 }
