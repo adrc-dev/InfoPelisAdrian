@@ -33,14 +33,20 @@ Route::get('characters/{id?}', function ($id = null) {
 })->name('characters');
 */
 
+
+// ruta characters
+Route::get('movies/{movie}/characters', [MovieController::class, 'characters'])->name('movies.characters');
+
+
+// ruta actores
+Route::get('actors', [PersonController::class, 'actors'])->name('actors');
+
 // ruta controlador de movies (agregada la ruta destroy)
 Route::resource('movies', MovieController::class)->except(['store', 'update']);
 
 // ruta controlador de persons
 Route::resource('persons', PersonController::class)->only(['show']);
 
-// ruta actores
-Route::get('actors', [PersonController::class, 'actors'])->name('actors');
-
 // ruta controlador movieDirector
 Route::resource('directors', MovieDirectorController::class)->only(['index', 'show']);
+

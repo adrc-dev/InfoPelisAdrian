@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Person;
+use App\Models\Movie_crew;
 
 class PersonController extends Controller
 {
@@ -35,7 +37,9 @@ class PersonController extends Controller
      */
     public function show(string $id)
     {
-        return view("persons.show", compact("id"));
+        $person = Person::findOrFail($id);
+        $moviesFromDirector = Movie_crew::where('person_id', $id)->where('job', 'Director')->get();
+        return view("persons.show", compact("person", "moviesFromDirector"));
     }
 
     /**
@@ -64,6 +68,10 @@ class PersonController extends Controller
 
     public function actors()
     {
-        return view("actors.index");
+        // caso lo quiera todo en una page -.-"
+        // $actors = Person::whereHas('movie_cast')->get();
+
+        $actors = Person::whereHas('movie_cast')->paginate(32);
+        return view("actors.index", compact('actors'));
     }
 }

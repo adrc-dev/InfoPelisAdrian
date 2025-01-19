@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Movie_crew;
 
 class MovieController extends Controller
 {
@@ -39,7 +40,8 @@ class MovieController extends Controller
     public function show(string $id)
     {
         $movie = Movie::findOrFail($id);
-        return view("movies.show", compact("movie"));
+        $director = Movie_crew::where('movie_id', $id)->where('job', 'director')->first();
+        return view("movies.show", compact("movie", "director"));
     }
 
     /**
@@ -66,5 +68,11 @@ class MovieController extends Controller
     {
         Movie::findOrFail($id)->delete();
         return redirect()->route('movies.index');
+    }
+
+    public function characters($id)
+    {
+        $movie = Movie::findOrFail($id);
+        return view('movies.characters', compact('movie'));
     }
 }

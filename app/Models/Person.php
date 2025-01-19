@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Movie extends Model
+class Person extends Model
 {
-    protected $table = 'movie';
+    protected $table = 'person';
 
     public function movie_cast() {
         return $this->hasMany(Movie_cast::class);

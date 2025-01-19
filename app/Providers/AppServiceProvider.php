@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        ini_set('memory_limit', '1028M');
         Paginator::defaultView('partials.paginator'); // le decimos de donde queremos el defaultView
     }
 }
