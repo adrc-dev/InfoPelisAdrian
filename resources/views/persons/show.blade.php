@@ -7,7 +7,7 @@
     <div class="filmContainer">
         Peliculas que actuo:
         @foreach ($person->movie_cast as $movies)
-            <a href="{{ route('movies.show', $movies->movie->id) }}">
+            <a href="{{ route('movies.show', $movies->movie->slug) }}">
                 {{ $movies->movie->title }}
             </a>
             @if (!$loop->last)
@@ -20,7 +20,7 @@
     <div class="filmContainer">
         Peliculas que dirigio:
         @foreach ($moviesFromDirector as $mov)
-            <a href="{{ route('movies.show', $mov->movie->id) }}">
+            <a href="{{ route('movies.show', $mov->movie->slug) }}">
                 {{ $mov->movie->title }}
             </a>
             @if (!$loop->last)

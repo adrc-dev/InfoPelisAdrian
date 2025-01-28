@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movie_crew extends Model
 {
     protected $table = 'movie_crew';
+    public $timestamps = false;
 
     /**
      * Get the person that owns the Movie_crew

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MovieDirectorController;
 use App\Http\Controllers\PersonController;
@@ -37,16 +39,18 @@ Route::get('characters/{id?}', function ($id = null) {
 // ruta characters
 Route::get('movies/{movie}/characters', [MovieController::class, 'characters'])->name('movies.characters');
 
-
 // ruta actores
 Route::get('actors', [PersonController::class, 'actors'])->name('actors');
 
-// ruta controlador de movies (agregada la ruta destroy)
-Route::resource('movies', MovieController::class)->except(['store', 'update']);
+// ruta controlador de movies
+Route::resource('movies', MovieController::class)
+    ->parameters(['movie' => 'slug'])
+    ->missing(function (Request $request) {
+        return Redirect::route('movies.index');
+    });
 
 // ruta controlador de persons
 Route::resource('persons', PersonController::class)->only(['show']);
 
 // ruta controlador movieDirector
 Route::resource('directors', MovieDirectorController::class)->only(['index', 'show']);
-

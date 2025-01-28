@@ -61,7 +61,65 @@ footer {
     padding: 5px;
     background-color: #222;
     text-align: left;
+    overflow: hidden; /* Limpia el float */
 }
+
+.filmContainer label {
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Ajustes para la imagen */
+.filmContainer .image {
+    width: 30%;
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Ajustes para el contenido */
+.filmContainer .content {
+    width: 65%;
+    float: left;
+}
+
+.filmContainer input, select, datalist {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #555;
+    color: #FFF;
+}
+
+.filmContainer input[type="submit"] {
+    width: 100px;
+    background-color: #737373;
+    color: antiquewhite;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filmContainer input[type="submit"]:hover {
+    background-color: antiquewhite;
+    color: black;
+}
+
+.error {
+    font-style: italic;
+    color: red;
+}
+
 /* usado para subtitles */
 .subtitle {
     text-align: center;
@@ -83,6 +141,8 @@ a:hover {
 
 /* logo borrar */
 .delete {
+    float: left;
+    margin-top: 15px;
     cursor: pointer;
     border: none;
     padding: 0;

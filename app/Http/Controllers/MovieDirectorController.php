@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Person;
 
 class MovieDirectorController extends Controller
 {
@@ -11,7 +12,10 @@ class MovieDirectorController extends Controller
      */
     public function index()
     {
-        return view("movieDirectors.index");
+        $directors = Person::whereHas('movie_crew', function($query) {
+            $query->where('job', 'director');
+        })->paginate(32);
+        return view("movieDirectors.index", compact('directors'));
     }
 
     /**

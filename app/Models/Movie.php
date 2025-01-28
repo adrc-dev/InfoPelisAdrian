@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     protected $table = 'movie';
+    public $timestamps = false; // para que no ponga el updated_at en las actualizaciones de las tablas
 
     public function movie_cast() {
         return $this->hasMany(Movie_cast::class);
@@ -19,5 +20,9 @@ class Movie extends Model
      */
     public function movie_crew() {
         return $this->hasMany(Movie_crew::class);
+    }
+
+    public function getRouteKeyName() {
+        return 'slug';
     }
 }
