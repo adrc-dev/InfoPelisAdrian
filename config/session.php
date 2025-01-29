@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' => env('SESSION_LIFETIME', 2), // limitamos en 2 minutos
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 

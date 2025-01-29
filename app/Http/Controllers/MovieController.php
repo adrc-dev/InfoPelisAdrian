@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Movie;
 use App\Models\Movie_crew;
-use App\http\Requests\MovieRequest;
+use App\Http\Requests\MovieRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
+    /*
+    public function __construct() {
+        $this->middleware('auth')->only(['create', 'edit', 'store', 'update']);
+    }*/
+
     /**
      * Display a listing of the resource.
      */
@@ -24,7 +31,6 @@ class MovieController extends Controller
         }
 
         $movies = Movie::paginate(5); // limitamos la paginacion a 5
-        // $movies = Movie::orderBy('id', 'DESC')->get(); // caso queramos ordenado por id descendente
         return view("movies.index", compact('movies'));
     }
 
@@ -33,6 +39,10 @@ class MovieController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->rol !== 'admin') {
+            return view('notAllowed');
+        }
+
         $directors = Movie_crew::where('job', 'director')->get();
         return view("movies.create", compact('directors'));
     }
@@ -91,6 +101,10 @@ class MovieController extends Controller
      */
     public function edit(string $slug)
     {
+        if (Auth::user()->rol !== 'admin') {
+            return view('notAllowed');
+        }
+
         $movie = Movie::where('slug', $slug)->firstOrFail();
         return view("movies.edit", compact("movie"));
     }

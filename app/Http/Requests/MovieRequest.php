@@ -41,17 +41,17 @@ class MovieRequest extends FormRequest
         }
 
         $rules['director'] = ['not_in:0'];
-        $rules['budget'] = ['integer'];
+        $rules['budget'] = ['integer', 'between:-2147483647,2147483647'];
         $rules['homepage'] = ['min:5', 'string'];
         $rules['overview'] = ['min:5', 'string'];
-        $rules['popularity'] = ['numeric'];
+        $rules['popularity'] = ['numeric', 'between:-999999.999999,999999.999999'];
         $rules['release_date'] = ['date_format:Y-m-d'];
-        $rules['revenue'] = ['integer'];
-        $rules['runtime'] = ['integer'];
+        $rules['revenue'] = ['integer', 'between:-2147483647,2147483647'];
+        $rules['runtime'] = ['integer', 'between:-2147483647,2147483647'];
         $rules['movie_status'] = ['min:5', 'string'];
         $rules['tagline'] = ['min:5', 'string'];
         $rules['vote_average'] = ['numeric', 'between:0,10'];
-        $rules['vote_count'] = ['integer'];
+        $rules['vote_count'] = ['integer', 'between:-2147483647,2147483647'];
         $rules['img'] = ['image', 'mimes:png,jpg,jpeg,webp', 'max:2048'];
 
         return $rules;
@@ -72,6 +72,7 @@ class MovieRequest extends FormRequest
 
             // presupuesto
             'budget.integer' => 'El presupuesto debe ser un numero entero.',
+            'budget.between' => 'El presupuesto debe ser entre -2147483647 y 2147483647.',
 
             // pagina oficial
             'homepage.min' => 'La pagina oficial debe tener al menos 5 caracteres.',
@@ -82,15 +83,18 @@ class MovieRequest extends FormRequest
 
             // popularidad
             'popularity.numeric' => 'La popularidad debe ser un numero.',
+            'popularity.between' => 'La popularidad debe ser entre -999999.999999 y 999999.999999.',
 
             // fecha de lanzamiento
             'release_date.date_format' => 'La fecha de lanzamiento debe tener el formato YYYY-MM-DD.',
 
             // venta de ingresos
             'revenue.integer' => 'Los ingresos deben ser un numero entero.',
+            'revenue.between' => 'Los ingresos debe ser entre -2147483647 y 2147483647.',
 
             // duracion
             'runtime.integer' => 'La duracion debe ser un numero entero.',
+            'runtime.between' => 'La duracion debe ser entre -2147483647 y 21474836475.',
 
             // estado
             'movie_status.min' => 'El estado de la pelicula debe tener al menos 5 caracteres.',
@@ -106,6 +110,7 @@ class MovieRequest extends FormRequest
 
             // total votos
             'vote_count.integer' => 'El total de votos debe ser un numero entero.',
+            'vote_count.between' => 'El total de votos debe ser entre -2147483647 y 2147483647.',
 
             // imagen
             'img.image' => 'El archivo debe ser una imagen.',

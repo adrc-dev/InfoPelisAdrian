@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -42,12 +43,27 @@ Route::get('movies/{movie}/characters', [MovieController::class, 'characters'])-
 // ruta actores
 Route::get('actors', [PersonController::class, 'actors'])->name('actors');
 
+// rutas de users
+Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');
+Route::post('signup', [LoginController::class, 'signup'])->name('signup');
+Route::get('login', [LoginController::class, 'loginForm'])->name('loginForm');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('user', [LoginController::class, 'user'])->name('auth.user')->middleware('auth');
+
 // ruta controlador de movies
 Route::resource('movies', MovieController::class)
     ->parameters(['movie' => 'slug'])
     ->missing(function (Request $request) {
         return Redirect::route('movies.index');
     });
+
+// middleware para que solo sea accesible logueado.
+Route::middleware('auth')->group(function () {
+    Route::get('movies/create', [MovieController::class, 'create'])->name('movies.create');
+    Route::get('movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+});
 
 // ruta controlador de persons
 Route::resource('persons', PersonController::class)->only(['show']);

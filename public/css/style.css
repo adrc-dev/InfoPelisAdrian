@@ -86,7 +86,7 @@ footer {
     float: left;
 }
 
-.filmContainer input, select, datalist {
+.filmContainer input, select, textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
@@ -95,6 +95,10 @@ footer {
     box-sizing: border-box;
     background-color: #555;
     color: #FFF;
+}
+
+#overview {
+    height: 150px;
 }
 
 .filmContainer input[type="submit"] {
@@ -188,4 +192,96 @@ a:hover {
     background-color: #555;
     color: #888;
     cursor: not-allowed;
+}
+
+.loginContainer {
+    max-width: 400px;
+    margin: 50px auto; /* Centrar en la pantalla */
+    padding: 20px;
+    border: solid 1px aqua;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    background-color: #222;
+    text-align: center;
+}
+
+.loginContainer h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loginContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginContainer label {
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+.loginContainer input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+}
+
+.loginContainer input:focus {
+    outline: none;
+    background-color: #666;
+}
+
+.loginContainer input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.loginContainer input[type="submit"] {
+    width: 100%;
+    background-color: #737373;
+    color: antiquewhite;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.loginContainer input[type="submit"]:hover {
+    background-color: antiquewhite;
+    color: black;
+}
+
+.loginContainer a {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.userContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userLogo {
+    width: 40px;
+}
+
+.textLogo {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
 }

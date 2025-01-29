@@ -43,19 +43,21 @@
                 @endif
             </div>
 
-            {{-- TODO arreglar para que solo sea accesible con rol admin --}}
-            <form action="{{ route('movies.destroy', ['movie' => $movie->slug]) }}" method="post">
-                @csrf
-                @method('delete') {{-- obligatorio definir el method --}}
-                <button type="submit" class="delete">
-                    <img id="moviesLogo" class="logo" src="{{ asset('images/borrar.png') }}" alt="logo para borrar">
-                </button>
-            </form>
+            @if (Auth::user()->rol == 'admin')
+                <form action="{{ route('movies.destroy', ['movie' => $movie->slug]) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="delete">
+                        <img id="moviesLogo" class="logo" src="{{ asset('images/borrar.png') }}" alt="logo para borrar">
+                    </button>
+                </form>
+            @endif
+
 
         </div>
-        <div>
+        <div class="imgContainer">
             @if ($movie->image == null)
-                <img class="image" src="{{ asset($moviePath . 'default.png') }}"
+                <img class="image" src="{{ asset(  'images/default.png') }}"
                     alt="Imagen de {{ $movie->title }}">
             @else
                 <img class="image" src="{{ asset($moviePath . $movie->image) }}"
@@ -63,6 +65,5 @@
             @endif
         </div>
     </div>
-    {{-- TODO arreglar para que solo sea accesible con rol admin --}}
     <a href="{{ route('movies.edit', ['movie' => $movie->slug]) }}">Editar pelicula.</a>
 @endsection
