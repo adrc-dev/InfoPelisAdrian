@@ -25,8 +25,6 @@ class LoginController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        // Auth::login($user);
-
         return redirect()->route('login')->with('message', 'Registrado con sucesso, haga login con sus credenciales.');
     }
 
@@ -44,7 +42,7 @@ class LoginController extends Controller
     public function login(Request $request) {
 
         $credentials = $request->only('email', 'password');
-        $remember = $request->has('remember');
+        $remember = ($request->get('remember')) ? true : false;
 
         if (Auth::guard('web')->attempt($credentials, $remember)) {
             $request->session()->regenerate();

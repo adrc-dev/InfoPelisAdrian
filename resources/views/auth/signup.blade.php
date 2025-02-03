@@ -28,9 +28,9 @@
             @error('password') <span class="error">{{ $message }}</span> @enderror
             <input type="password" name="password" id="password">
 
-            <label for="confirmPass">Repite la contraseña</label>
-            @error('confirmPass') <span class="error">{{ $message }}</span> @enderror
-            <input type="password" name="confirmPass" id="confirmPass">
+            <label for="password_confirmation">Repite la contraseña:</label>
+            @error('password_confirmation') <span class="error">{{ $message }}</span> @enderror
+            <input type="password" name="password_confirmation" id="password_confirmation">
 
             <input type="submit" value="Entrar">
         </form>

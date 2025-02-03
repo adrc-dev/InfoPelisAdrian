@@ -67,6 +67,3 @@ Route::middleware('auth')->group(function () {
 
 // ruta controlador de persons
 Route::resource('persons', PersonController::class)->only(['show']);
-
-// ruta controlador movieDirector
-Route::resource('directors', MovieDirectorController::class)->only(['index', 'show']);

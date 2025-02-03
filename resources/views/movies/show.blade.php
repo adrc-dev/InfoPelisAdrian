@@ -34,7 +34,6 @@
             <div>
                 Actores:
                 @foreach ($movie->movie_cast->take(10) as $char)
-                    {{-- TODO Comprobar si el profe quiere que estos nombre sean rutas tambien. --}}
                     <a href="{{ route('persons.show', $char->person->id) }}">{{ $char->person->person_name }}</a>,
                 @endforeach
 
@@ -43,7 +42,7 @@
                 @endif
             </div>
 
-            @if (Auth::user()->rol == 'admin')
+            @if (Auth::check() && Auth::user()->rol == 'admin')
                 <form action="{{ route('movies.destroy', ['movie' => $movie->slug]) }}" method="post">
                     @csrf
                     @method('delete')

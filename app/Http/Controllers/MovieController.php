@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
-    /*
-    public function __construct() {
-        $this->middleware('auth')->only(['create', 'edit', 'store', 'update']);
-    }*/
-
     /**
      * Display a listing of the resource.
      */
@@ -39,9 +34,11 @@ class MovieController extends Controller
      */
     public function create()
     {
+        /*
         if (Auth::user()->rol !== 'admin') {
             return view('notAllowed');
         }
+        */
 
         $directors = Movie_crew::where('job', 'director')->get();
         return view("movies.create", compact('directors'));
@@ -101,12 +98,15 @@ class MovieController extends Controller
      */
     public function edit(string $slug)
     {
+        /*
         if (Auth::user()->rol !== 'admin') {
             return view('notAllowed');
         }
+        */
 
         $movie = Movie::where('slug', $slug)->firstOrFail();
-        return view("movies.edit", compact("movie"));
+        $directors = Movie_crew::where('job', 'director')->get();
+        return view("movies.edit", compact("movie", "directors"));
     }
 
     /**
@@ -138,6 +138,12 @@ class MovieController extends Controller
                 ->storeAs('movies_img', $imgName, 'public');
             $movie->image = $imgName;
         }
+
+        $movieCrew = new Movie_crew();
+        $movieCrew->movie_id = $movie->id; // asociar con la movie creada
+        $movieCrew->person_id = $request->input('director'); // el id de la persona seleccionada
+        $movieCrew->job = 'director';
+        $movieCrew->save();
 
         $movie->save();
 

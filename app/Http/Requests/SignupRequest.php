@@ -26,10 +26,9 @@ class SignupRequest extends FormRequest
 
         $rules['name'] = ['required', 'string', 'min:2', 'max:20'];
         $rules['email'] = ['required', 'string', 'min:5', 'max:255', 'unique:users'];
-        $rules['password'] = ['required', 'string', 'min:8', 'max:20']; //TODO confirmar con profe
-        $rules['surname'] = ['required', 'string', 'min:2', 'max:20']; // TODO confirmar con profe
+        $rules['password'] = ['required', 'confirmed', Rules\Password::defaults()];
+        $rules['surname'] = ['required', 'string', 'min:2', 'max:40'];
         $rules['nickname'] = ['required', 'string', 'min:2', 'max:20', 'unique:users'];
-        $rules['confirmPass'] = ['required', 'string', 'min:2', 'max:20', 'same:password'];
 
         return $rules;
     }
@@ -49,9 +48,7 @@ class SignupRequest extends FormRequest
             'email.unique' => 'El correo electronico ya esta en uso.',
 
             'password.required' => 'La contraseña es obligatoria.',
-            'password.string' => 'La contraseña debe ser una cadena de texto.',
-            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password.max' => 'La contraseña no puede tener mas de 20 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
 
             'surname.required' => 'El apellido es obligatorio.',
             'surname.string' => 'El apellido debe ser una cadena de texto.',
@@ -63,12 +60,6 @@ class SignupRequest extends FormRequest
             'nickname.min' => 'El nick debe tener al menos 2 caracteres.',
             'nickname.max' => 'El nick no puede tener mas de 20 caracteres.',
             'nickname.unique' => 'El nick ya esta en uso.',
-
-            'confirmPass.required' => 'Es obligatorio confirmar la contraseña.',
-            'confirmPass.string' => 'La contraseña debe ser una cadena de texto.',
-            'confirmPass.min' => 'La contraseña debe tener al menos 2 caracteres.',
-            'confirmPass.max' => 'La contraseña no puede tener mas de 20 caracteres.',
-            'confirmPass.same' => 'Las contraseñas no coinciden.',
         ];
     }
 }

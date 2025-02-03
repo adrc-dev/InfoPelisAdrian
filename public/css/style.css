@@ -70,7 +70,7 @@ footer {
     font-weight: bold;
 }
 
-/* Ajustes para la imagen */
+/* ajustes imagen */
 .filmContainer .image {
     width: 30%;
     float: right;
@@ -80,7 +80,7 @@ footer {
     object-fit: cover;
 }
 
-/* Ajustes para el contenido */
+/* justes contenido */
 .filmContainer .content {
     width: 65%;
     float: left;
@@ -194,9 +194,11 @@ a:hover {
     cursor: not-allowed;
 }
 
+/* login */
+
 .loginContainer {
     max-width: 400px;
-    margin: 50px auto; /* Centrar en la pantalla */
+    margin: 50px auto;
     padding: 20px;
     border: solid 1px aqua;
     border-radius: 5px;
